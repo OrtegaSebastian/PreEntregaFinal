@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 2,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 3,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 4,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 5,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 6,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 7,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 8,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 9,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 10,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  },
+  {
+    "id": 11,
+    "nombre": "prod1",
+    "descripcion": "hola1",
+    "codigo": "3151",
+    "foto": "31531",
+    "precio": 5000,
+    "stock": 30
+  }
+]
