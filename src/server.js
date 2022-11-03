@@ -1,5 +1,5 @@
 import express from 'express'
-const { Router } = express
+import Router from 'express'
 
 import {
     productosDao as productosApi,
