@@ -45,3 +45,5 @@ carritosRouter.delete('/:id/productos/:idProd', async (req, res) => {
     }
     res.end()
 })
+
+export default carritosRouter

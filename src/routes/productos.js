@@ -4,7 +4,8 @@ import Router from 'express'
 import {
   productosDao as productosApi,
 } from '../../daos/index.js'
-import {crearErrorNoEsAdmin, soloAdmins} from '../middleware/admin.js'
+
+import { crearErrorNoEsAdmin, soloAdmins } from '../middleware/admin.js'
 
 // configuro router de productos
 
@@ -30,3 +31,5 @@ import {crearErrorNoEsAdmin, soloAdmins} from '../middleware/admin.js'
   productosRouter.delete('/:id', soloAdmins, async (req, res) => {
       res.json(await productosApi.borrar(req.params.id))
   })
+
+export default productosRouter
