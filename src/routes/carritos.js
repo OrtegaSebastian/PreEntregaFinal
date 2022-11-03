@@ -1,77 +1,47 @@
 
-import {Router,express} from "express"
-import fs from "fs"
-import ContenedorArchivo from "../../contenedores/archivoContain.js"
-const constructor = new ContenedorArchivo("./carritos.txt")
+import Router from 'express'
+import { 
+  carritosDao as carritosApi
+} from '../../daos/index.js'
 
-const routerCarritos = Router();
+// configuro router de carritos
 
-const Charts = [];
-//  devuelve todos los productos.
-routerCarritos.get('/products', async (req, res) => {
-try {
-res.send(await constructor.getAll());
-} catch (err) {
-res.status(404).send(err);
-}
-});
+const carritosRouter = new Router()
 
-
-//  -> devuelve un producto según su id. 
-routerCarritos.get('/products/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    res.send(await constructor.getById(parseInt(id)));
-  } catch (err) {
-    res.status(404).send(err);
-  }
-});
-
-// agrega productos 
-routerCarritos.post('/products', async (req, res)=>{
-  try {
-    const {title, price, tumbnail} = req.body;
-    const id = Products.length+1
-    const itemToSave = {
-      id,
-      title,
-      price,
-      tumbnail
-    }
-    res.send(await constructor.save(itemToSave));
-  } catch (err) {
-    res.status(404).send(err);
-  }
+carritosRouter.get('/', async (req, res) => {
+    res.json((await carritosApi.listarAll()).map(c => c.id))
 })
 
+carritosRouter.post('/', async (req, res) => {
+    res.json(await carritosApi.guardar())
+})
 
-// PUT '/api/productos/:id' -> recibe y actualiza un producto según su id. 
-routerCarritos.put('/products/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const {title, price, tumbnail} = req.body;
-    const idInt = parseInt(id);
-    const itemToUpdate = {
-      id: idInt,
-      title,
-      price,
-      tumbnail
+carritosRouter.delete('/:id', async (req, res) => {
+    res.json(await carritosApi.borrar(req.params.id))
+})
+
+//--------------------------------------------------
+// router de productos en carrito
+
+carritosRouter.get('/:id/productos', async (req, res) => {
+    const carrito = await carritosApi.listar(req.params.id)
+    res.json(carrito.productos)
+})
+
+carritosRouter.post('/:id/productos', async (req, res) => {
+    const carrito = await carritosApi.listar(req.params.id)
+    const producto = await productosApi.listar(req.body.id)
+    carrito.productos.push(producto)
+    await carritosApi.actualizar(carrito)
+    res.end()
+})
+
+carritosRouter.delete('/:id/productos/:idProd', async (req, res) => {
+    const carrito = await carritosApi.listar(req.params.id)
+    const index = carrito.productos.findIndex(p => p.id == req.params.idProd)
+    if (index != -1) {
+        carrito.productos.splice(index, 1)
+        await carritosApi.actualizar(carrito)
     }
-    res.send(await constructor.updateById(idInt, itemToUpdate));
-  } catch (err) {
-    res.status(404).send(err.msg);
-  }
-});
-
-
-// DELETE '/api/productos/:id' -> elimina un producto según su id.
-routerCarritos.delete('/products/:id', async (req,res)=>{
-try {
-const { id } = req.params;
-res.send(await constructor.deleteById(parseInt(id)));
-} catch (err) {
-res.status(404).send(err.msg);
-}
-});
-
-module.exports = routerCarritos;
+    res.end()
+})
