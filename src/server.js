@@ -1,5 +1,4 @@
 import express from 'express'
-
 import routerCarritos from '../src/routes/carritos.js'
 import routerProductos from '../src/routes/productos.js'
 //------------------------------------------------------------------------
@@ -16,5 +15,7 @@ app.use(express.static('public'))
 
 app.use('/api/productos', routerProductos)
 app.use('/api/carritos', routerCarritos)
+
+
 
 export default app
