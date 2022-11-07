@@ -1,7 +1,7 @@
 
 import Router from 'express'
 import { 
-  carritosDao as carritosApi
+carritosDao as carritosApi
 } from '../../daos/index.js'
 
 // configuro router de carritos
